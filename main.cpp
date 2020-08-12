@@ -37,7 +37,6 @@ class Key
 friend std::ofstream& operator<< (std::ofstream& fout, const Key& rhs) {
         fout<<rhs.first<<" : ";
         fout<<rhs.second<<" : ";
-       // out<<rhs.third;
     }
 
 };
@@ -95,27 +94,25 @@ case 2:
   srand(time(NULL));//seed to generate random values 
   id = rand()%100+100000; //random numbers generated for the students 
  
-
-
     //res is used to store the values of the insert operation
      auto res= setOfStud.insert(std::make_pair(Key(userName,passWord,id),id));
      if(res.second == false){
      while (trial<5){
       std::cout << "Failed to insert with duplicate name - "<<userName << std::endl;
       //write the breach to file 
-    fout.open("attemptedduplicate.txt");
-    fout<< "Name" << " :: " <<"Password" << " :: " << "ID" <<std::endl;
-    fout<< userName << " :: " <<passWord << " :: " << id <<std::endl;
+      fout.open("attemptedduplicate.txt");
+      fout<< "Name" << " :: " <<"Password" << " :: " << "ID" <<std::endl;
+      fout<< userName << " :: " <<passWord << " :: " << id <<std::endl;
     //write the breach to console
-    std::cout<<"unauthorized access...Try again "<<std::endl;
-    std::cout<<"Enter the name you want to enter again "<<std::endl;
-     std::cin>>userName;
-     std::cout<<"Enter the password you want to enter again "<<std::endl;
-     std::cin>>passWord;
+      std::cout<<"unauthorized access...Try again "<<std::endl;
+      std::cout<<"Enter the name you want to enter again "<<std::endl;
+      std::cin>>userName;
+      std::cout<<"Enter the password you want to enter again "<<std::endl;
+      std::cin>>passWord;
       srand(time(NULL));
-     id = rand()%100+198500;
-    trial++;
-    auto res= setOfStud.insert(std::make_pair(Key(userName,passWord,id),id));
+      id = rand()%100+198500;
+      trial++;
+      auto res= setOfStud.insert(std::make_pair(Key(userName,passWord,id),id));
      fout.close();
     }
   }
