@@ -20,7 +20,6 @@ class Key
   { 
   return (first == other.first
             && second == other.second);
-          //  && third == other.third);
   }
   
  friend std::ostream& operator<< (std::ostream& out, const Key& rhs) {
